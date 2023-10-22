@@ -3,6 +3,7 @@ import { useState } from "react";
 import rockpng from "../assets/rock.png";
 import paperpng from "../assets/paper.png";
 import scissorspng from "../assets/scissors.png";
+import { useNavigate } from "react-router-dom";
 
 
 interface ComputerGameProps {
@@ -22,12 +23,18 @@ interface ComputerGameProps {
       computer: number;
     }>
   >;
+  score: {
+    player: number;
+    computer: number;
+  };
+
 }
 
 
 export const ComputerGame: React.FC<ComputerGameProps> = ({
   Choice,
   setChoice,
+  score,
   setScore,
 }: ComputerGameProps) => {
 
@@ -39,7 +46,7 @@ export const ComputerGame: React.FC<ComputerGameProps> = ({
     setChoice({player: choice, computer: Math.floor(Math.random() * 3) + 1})
     setIsPlayed(true);
   };
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     if(Choice.player != 0){
@@ -56,7 +63,7 @@ export const ComputerGame: React.FC<ComputerGameProps> = ({
         setScore((prev) => {
           return {
             ...prev,
-            player: prev.player + 1,
+            computer: prev.computer - 1,
           };
         });
         return;
@@ -65,13 +72,22 @@ export const ComputerGame: React.FC<ComputerGameProps> = ({
         setScore((prev) => {
           return {
             ...prev,
-            computer: prev.computer + 1,
+            player: prev.player - 1,
           };
         });
         return;
       }
     }
   }, [Choice]);
+
+  useEffect(() => {
+    if(score.player === 0 ){
+      navigate("/computer/loss")
+    }
+    if(score.computer === 0 ){
+      navigate("/computer/win")
+    }
+  }, [score.player, score.computer])
 
   const ShowResult = () => (
     <>

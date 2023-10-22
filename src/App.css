@@ -2,7 +2,7 @@
     font-size: 3rem;
     font-weight: 600;
     text-align: center;
-    margin: 4rem 0;
+    margin: 3rem 0;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
@@ -68,13 +68,14 @@
 
 .score{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    margin: 1rem 2rem;
-    border: 3px solid #e0e0e0;
+    margin: 1rem 3rem;
+    border: 2px solid #e0e0e0;
     border-radius: 1rem;
+    padding: 0 2rem;
 }
-.score .score_title{
+/* .score .score_title{
     font-size: 2rem;
     font-weight: 600;
     color: #e0e0e0;
@@ -112,7 +113,7 @@
     font-weight: 700;
     text-align: center;
     margin: 0;
-}
+} */
 
 .result{
     display: flex;
@@ -138,13 +139,13 @@
     height: 70%;
     object-fit: cover;
 }
-.result .restart{
+.restart{
     margin: 0 2rem;
 }
 .result .restart h2{
     font-size: 2rem;
 }
-.result button{
+.restart button{
     padding: 1rem 2.3rem;
     border: none;
     border-radius: 1rem;
@@ -159,9 +160,72 @@
     animation: scale-and-fade .3s ease-in-out forwards;
     transition: all 0.3s ease;
 }
-.result button:hover{
+.restart button:hover{
     background-color: #0e1730;
     color: #fff;
     box-shadow: 2px 2px 15px rgba(255, 255, 255, 0.529);
     text-decoration: underline;
+}
+
+.score_player{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+.score_player .score_player_img{
+    background-color: #e0e0e0;
+    padding: 0.6rem;
+}
+.score_player img{
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+}
+
+.score .score_player_details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+.score .score_player_details .score_player_details_points{
+    display: flex;
+    gap: 0.2rem;
+}
+.score .score_player_details img{
+    width: 1.2rem;
+    height: 1.2rem;
+    object-fit: cover;
+}
+
+.result_win{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.result_win h1{
+    font-size: 3rem;
+    /* font-weight: 600; */
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    text-shadow: 0 0.2rem 0.2rem rgba(255, 255, 255, 0.2);
+}
+
+.result_loss{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.result_loss h1{
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    text-shadow: 0 0.2rem 0.2rem rgba(255, 255, 255, 0.2);
 }

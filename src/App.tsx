@@ -5,12 +5,13 @@ import { GameMode } from './components/GameMode'
 import { Heading } from './components/Heading'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Score } from './components/Score'
+import { ResultLoss, ResultWin } from './components/Result';
 
 function App() {
 
   const [score, setScore] = useState({
-    player: 0,
-    computer: 0
+    player: 3,
+    computer: 3
   });
 
   const [Choice, setChoice] = useState({
@@ -19,19 +20,46 @@ function App() {
   });
 
   useEffect(() => {
-    
-  }, [Choice])
-  
+    if(score.player === 0 || score.computer === 0){
+      setScore({
+        player: 3,
+        computer: 3
+      })
+      setChoice({
+        player: 0,
+        computer: 0
+      })
+      
+    }
+  }, [score])
+
   return (
     <>
-      <Heading />
+      
       
       <BrowserRouter>
         <Routes>
-          <Route path="/gamemode" element={<GameMode />} />
           <Route path="/" element={<>
-            <ComputerGame Choice={Choice} setChoice={setChoice} setScore={setScore} />
+            <Heading />
+            <GameMode />
+          </>
+          } />
+          
+          <Route path="/computer" element={<>
+            <Heading />
+            
             <Score score={score} />
+          <ComputerGame Choice={Choice} setChoice={setChoice} score={score} setScore={setScore} />
+          </>} />
+
+          <Route path="/computer/win" element={<>
+            <Heading />
+            <ResultWin />
+          </>} />
+
+          <Route path="/computer/loss" element={<>
+            <Heading />
+            <ResultLoss />
           </>} />
         </Routes>
       </BrowserRouter>  
