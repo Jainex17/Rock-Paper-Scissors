@@ -9,6 +9,27 @@ import { ResultLoss, ResultWin } from './components/Result';
 
 function App() {
 
+  // const webSocket = new WebSocket('ws://localhost:443/');
+  //   webSocket.onmessage = (event) => {
+  //     console.log(event)
+  //   webSocket.addEventListener("open", () => {
+  //     console.log("We are connected");
+  //   });
+  // }
+
+  const [ws, setWs] = useState(new WebSocket('ws://localhost:443/'));
+
+  function connectwebSocket() {
+    ws.onmessage = (event) => {
+      console.log(event)
+      console.log("ws connected");
+      
+  }
+  }
+  useEffect(() => {
+    connectwebSocket();
+  }, [])
+
   const [score, setScore] = useState({
     player: 3,
     computer: 3
