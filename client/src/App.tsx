@@ -7,28 +7,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Score } from './components/Score'
 import { ResultLoss, ResultWin } from './components/Result';
 
+import io from 'socket.io-client';
+const socket = io('https://backend-rps.vercel.app/');
+
 function App() {
-
-  // const webSocket = new WebSocket('ws://localhost:443/');
-  //   webSocket.onmessage = (event) => {
-  //     console.log(event)
-  //   webSocket.addEventListener("open", () => {
-  //     console.log("We are connected");
-  //   });
-  // }
-
-  const [ws, setWs] = useState(new WebSocket('ws://localhost:443/'));
-
-  function connectwebSocket() {
-    ws.onmessage = (event) => {
-      console.log(event)
-      console.log("ws connected");
-      
-  }
-  }
-  useEffect(() => {
-    connectwebSocket();
-  }, [])
 
   const [score, setScore] = useState({
     player: 3,
@@ -54,11 +36,20 @@ function App() {
     }
   }, [score])
 
+  function btnhandler(){
+    socket.emit('SendMessage', {message: 'hello world'});
+  }
+
+  useEffect(() => {
+    socket.on('ReceiveMessage', (message) => {
+      alert(message.message);
+    })
+  } ,[socket])
+
   return (
     <>
-      
-      
       <BrowserRouter>
+        <button onClick={btnhandler}>test</button>
         <Routes>
           <Route path="/" element={<>
             <Heading />

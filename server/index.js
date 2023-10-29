@@ -1,24 +1,36 @@
-const express = require('express')
+const express = require('express');
+const cors = require('cors');
+
 const app = express();
-const { WebSocketServer } = require('ws')
-const sockserver = new WebSocketServer({ port: 443 })
+app.use(cors());
 
-app.get('/', (req, res) => res.send('Hello World!'))
-app.listen(3000, () => console.log(`Listening on ${3000}`))
+const http = require('http');
+const { Server } = require('socket.io');
 
+const server = http.createServer(app);
 
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST'],
+  },
+});
 
-sockserver.on('connection', ws => {
- console.log('New client connected!')
- ws.send('connection established')
- ws.on('close', () => console.log('Client has disconnected!'))
- ws.on('message', data => {
-   sockserver.clients.forEach(client => {
-     console.log(`distributing message: ${data}`)
-     client.send(`${data}`)
-   })
- })
- ws.onerror = function () {
-   console.log('websocket error')
- }
-})
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  console.log('socketId: ' + socket.id);
+  
+
+  socket.on('disconnect', () => {
+    console.log('a user disconnected');
+  });
+
+  socket.on('SendMessage', (message) => {
+    console.log(message);
+    socket.broadcast.emit('ReceiveMessage', message);
+  });
+});
+
+server.listen(3001, () => {
+  console.log('server listening on port 3001');
+});
