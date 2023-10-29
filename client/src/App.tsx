@@ -8,7 +8,7 @@ import { Score } from './components/Score'
 import { ResultLoss, ResultWin } from './components/Result';
 
 import io from 'socket.io-client';
-const socket = io('https://backend-rps.vercel.app/');
+const socket = io('https://backend-rps.vercel.app');
 
 function App() {
 
