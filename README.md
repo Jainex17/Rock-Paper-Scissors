@@ -1,27 +1,22 @@
-# React + TypeScript + Vite
+# Rock, Paper, Scissors Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Rock, Paper, Scissors game built in just 2 hours using Vite, TypeScript, and ReactJS! 🚀
 
-Currently, two official plugins are available:
+<h2> <a href="https://rps-jainex.vercel.app/">Play</a> </h2>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Features:
 
-## Expanding the ESLint configuration
+- Quick and Simple: This game was developed in a mere 2 hours, providing a quick and straightforward Rock, Paper, Scissors experience.
+- Player vs. Computer: Challenge the computer to a game of Rock, Paper, Scissors. Can you outsmart the algorithm?
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Tech Stack:
 
-- Configure the top-level `parserOptions` property like this:
+- Vite
+- Typescript
+- ReactJs
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+### Contributing:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Contributions are welcome! If you have ideas for improvements, additional features, or bug fixes, feel free to open an issue or submit a pull request.
+
+Enjoy playing and have fun coding! 🎮✨
